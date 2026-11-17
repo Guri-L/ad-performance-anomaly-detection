@@ -1,0 +1,25 @@
+# Every detection setting with its default value.
+# Copy, change what you need, and pass with: adwatch detect --config my.yaml
+# Any setting left out keeps its default.
+
+# Baseline: the trailing days each day is compared against.
+window_days: 28
+min_history_days: 14          # days of data needed before a campaign is scored
+
+# Level metrics: spend, impressions, CPC.
+level_z_threshold: 4.5        # raise for fewer alerts, lower for more
+level_min_change: 0.30        # ignore moves smaller than 30% from expected
+level_scale_floor: 0.06       # never assume day-to-day noise below 6%
+
+# Rate metrics: CTR, conversion rate.
+rate_z_threshold: 4.0
+rate_min_change: 0.25
+rate_min_expected_events: 5   # skip days expecting fewer events than this
+
+# Alerts on the same campaign and metric merge into one incident across this gap.
+incident_gap_days: 1
+
+# Budget pacing: projected month-end spend divided by budget.
+pacing_over_threshold: 1.10
+pacing_under_threshold: 0.85
+pacing_run_rate_days: 7       # days averaged for the daily run rate
